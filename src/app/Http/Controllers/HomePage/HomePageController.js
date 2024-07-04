@@ -1,16 +1,11 @@
-function index(req, res) {
+exports.index = async (req, res) => {
   res.render("homepage/index", {
     title: "Home",
   });
-}
+};
 
-function about(req, res) {
-  res.render("homepage/about", {
+exports.about = async (req, res) => {
+  res.render("homepage/index", {
     title: "About",
   });
-}
-
-module.exports = {
-  index,
-  about,
 };
