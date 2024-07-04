@@ -13,8 +13,13 @@
             <span class="relative z-[1] inline-block bg-white px-2">Or Sign In With Email</span>
           </div>
 
-          <form action="/login" method="POST">
+          <% if (message) { %>
+          <div class="alert alert-danger">
+            <%= message %>
+          </div>
+          <% } %>
 
+          <form action="/login" method="POST">
             <div class="form-group">
               <label for="email" class="form-label">Email Adrdess</label>
               <input type="email" id="email" name="email" class="form-control" placeholder="Your Email Address" />

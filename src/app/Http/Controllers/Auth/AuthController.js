@@ -3,7 +3,9 @@ const User = require("../../../Models/Users");
 
 exports.register = async (req, res) => {
   if (req.method === "GET") {
-    return res.render("auth/register", { title: "Register" });
+    const message = req.session.message || null;
+    req.session.message = null;
+    return res.render("auth/register", { title: "Register", message });
   }
 
   const { fullname, email, password } = req.body;
@@ -11,7 +13,8 @@ exports.register = async (req, res) => {
 
   const userExists = await User.findOne({ email });
   if (userExists) {
-    return res.send("User with this email already exists");
+    req.session.message = "User with this email already exists";
+    return res.redirect("/register");
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -21,14 +24,16 @@ exports.register = async (req, res) => {
     await user.save();
     res.redirect("/login");
   } catch (error) {
-    console.error("Error registering user:", error);
-    res.send("Error registering user");
+    req.session.message = "Error registering user";
+    res.redirect("/register");
   }
 };
 
 exports.login = async (req, res) => {
   if (req.method === "GET") {
-    return res.render("auth/login", { title: "Login" });
+    const message = req.session.message || null;
+    req.session.message = null;
+    return res.render("auth/login", { title: "Login", message });
   }
 
   const { email, password } = req.body;
@@ -36,12 +41,12 @@ exports.login = async (req, res) => {
 
   if (user && (await bcrypt.compare(password, user.password))) {
     req.session.user = user;
-    //   res.redirect("/");
     res.render("dashboard/index", {
       title: "Dashboard",
     });
   } else {
-    res.send("Invalid username or password");
+    req.session.message = "Invalid email or password";
+    res.redirect("/login");
   }
 };
 
