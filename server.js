@@ -8,6 +8,7 @@ const app = express();
 const webRoutes = require("./src/routes/web");
 const setCurrentRoute = require("./src/app/Http/Middlewares/setCurrentRoute");
 const connectToDatabase = require("./src/configs/connectToDatabase");
+const greetingMiddleware = require("./src/app/Http/Middlewares/greetingMiddleware");
 
 // Set the view engine to ejs
 app.set("view engine", "ejs");
@@ -32,6 +33,7 @@ connectToDatabase();
 app.use(setCurrentRoute);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sessionMiddleware);
+app.use(greetingMiddleware);
 
 app.use(webRoutes);
 

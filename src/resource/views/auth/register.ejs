@@ -6,11 +6,11 @@
            <img class="mb-8" src="/public/assets/images/flower.svg" alt="" />
            <h1 class="mb-4">Sing Up</h1>
            <p>Donec sollicitudin molestie malesda sollitudin</p>
-           <div class="signin-options mt-10">
+           <!-- <div class="signin-options mt-10">
              <a class="btn btn-outline-white block w-full text-dark" href="#">Sign Up With Google</a>
-           </div>
+           </div> -->
            <div class="relative my-8 text-center after:absolute after:left-0 after:top-1/2 after:z-[0] after:w-full after:border-b after:border-border after:content-['']">
-             <span class="relative z-[1] inline-block bg-white px-2">Or Sign Up With Email</span>
+             <span class="relative z-[1] inline-block bg-white px-2">Sign Up With Email</span>
            </div>
 
            <% if (message) { %>
@@ -33,6 +33,10 @@
                <input type="password" id="password" name="password" class="form-control" placeholder="Your Password" />
              </div>
              <input class="btn btn-primary mt-10 block w-full" type="submit" value="Sign Up" />
+             <p class="mt-6 text-center">
+               Already have an account?
+               <a class="text-dark" href="/login">Log in</a> Using account
+             </p>
            </form>
          </div>
        </div>

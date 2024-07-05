@@ -18,6 +18,5 @@ router.post("/register", Auth.register);
 router.get("/logout", Auth.logout);
 
 router.get("/dashboard", ensureAuthenticated, Dash.adminPanel);
-router.get("/profile", Dash.input);
 
 module.exports = router;

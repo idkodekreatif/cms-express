@@ -53,6 +53,6 @@ exports.logout = async (req, res) => {
     if (err) {
       return res.send("Error logging out");
     }
-    res.redirect("/");
+    res.redirect("/login");
   });
 };
