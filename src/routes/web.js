@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const ensureAuthenticated = require("../app/Http/Middlewares/authMiddleware");
+
 // Controllers
 const Auth = require("../app/Http/Controllers/Auth/AuthController");
 const HomePageControlller = require("../app/Http/Controllers/HomePage/HomePageController");
@@ -15,6 +17,7 @@ router.get("/register", Auth.register);
 router.post("/register", Auth.register);
 router.get("/logout", Auth.logout);
 
-router.get("/dashboard", Dash.adminPanel);
+router.get("/dashboard", ensureAuthenticated, Dash.adminPanel);
+router.get("/profile", Dash.input);
 
 module.exports = router;

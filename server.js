@@ -24,11 +24,6 @@ app.use(
   express.static(path.join(__dirname, "src/public/assets"))
 );
 
-app.use(
-  "/dashboard/assets",
-  express.static(path.join(__dirname, "src/public/dashboard/assets"))
-);
-
 // Connect to MongoDB
 connectToDatabase();
 

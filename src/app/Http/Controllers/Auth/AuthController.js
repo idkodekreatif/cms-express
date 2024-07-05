@@ -40,11 +40,6 @@ exports.login = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await bcrypt.compare(password, user.password))) {
-    // req.session.user = user;
-    // res.render("dashboard/index", {
-    //   title: "Dashboard",
-    //   layout: "./layouts/dashboard",
-    // });
     req.session.user = user;
     res.redirect("/dashboard");
   } else {
