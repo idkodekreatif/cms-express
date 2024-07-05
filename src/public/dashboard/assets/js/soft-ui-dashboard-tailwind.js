@@ -17,8 +17,8 @@
 */
 var page = window.location.pathname.split("/").pop().split(".")[0];
 var aux = window.location.pathname.split("/");
-var to_build = (aux.includes('pages')?'../':'./');
-var root = window.location.pathname.split("/")
+var to_build = aux.includes("pages") ? "../" : "./";
+var root = window.location.pathname.split("/");
 if (!aux.includes("pages")) {
   page = "dashboard";
 }
@@ -41,7 +41,6 @@ if (document.querySelector("[nav-pills]")) {
 
 if (document.querySelector("[dropdown-trigger]")) {
   loadJS(to_build + "assets/js/dropdown.js", true);
-
 }
 
 if (document.querySelector("[fixed-plugin]")) {
