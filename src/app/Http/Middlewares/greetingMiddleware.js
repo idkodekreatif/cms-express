@@ -1,4 +1,4 @@
-const getGreeting = require("../../helpers/timeHelper");
+const getGreeting = require("../../../Helpers/timeHelper");
 
 const greetingMiddleware = (req, res, next) => {
   const user = req.session.user;
