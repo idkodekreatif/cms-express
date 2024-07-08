@@ -31,10 +31,9 @@ connectToDatabase();
 // Use the setCurrentRoute middleware
 // Middleware
 app.use(setCurrentRoute);
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sessionMiddleware);
 app.use(greetingMiddleware);
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(webRoutes);
 
 const PORT = process.env.PORT || 3000;

@@ -32,6 +32,7 @@
   });
 </script>
 
+
 <!-- Chart Dashboard -->
 <script>
   var ctx1 = document.getElementById("chart-line").getContext("2d");
@@ -183,3 +184,23 @@
     },
   });
 </script>
+
+<!-- Start Modal Categories -->
+<script>
+  function openModal(action, id = '', name = '') {
+    if (action === 'create') {
+      document.getElementById('modal-title').innerText = 'Add Category';
+      document.getElementById('modal-form-action').action = '/categories';
+      document.getElementById('category-id').value = '';
+      document.getElementById('category-name').value = '';
+      document.getElementById('modal-submit-button').innerText = 'Save';
+    } else if (action === 'edit') {
+      document.getElementById('modal-title').innerText = 'Edit Category';
+      document.getElementById('modal-form-action').action = '/categories/update';
+      document.getElementById('category-id').value = id;
+      document.getElementById('category-name').value = name;
+      document.getElementById('modal-submit-button').innerText = 'Update';
+    }
+  }
+</script>
+<!-- End start categories -->

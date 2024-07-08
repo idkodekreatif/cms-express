@@ -20,6 +20,8 @@ router.get("/logout", Auth.logout);
 
 router.get("/dashboard", Dash.adminPanel, ensureAuthenticated);
 router.get("/categories", Categories.index, ensureAuthenticated);
-router.get("/categories/create", Categories.create, ensureAuthenticated);
+router.post("/categories", Categories.store, ensureAuthenticated);
+router.post("/categories", Categories.update, ensureAuthenticated);
+router.get("/categories/delete/:id", Categories.delete, ensureAuthenticated);
 
 module.exports = router;
