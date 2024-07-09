@@ -1,6 +1,6 @@
 const Post = require("../../../../Models/Posts");
 const Category = require("../../../../Models/Categories");
-const User = require("../../../../Models/Users");
+const User = require("../../../../Models/Users"); // Pastikan path dan nama ini benar
 const generateSlug = require("../../../../../Utils/slugify");
 
 exports.index = async (req, res) => {
