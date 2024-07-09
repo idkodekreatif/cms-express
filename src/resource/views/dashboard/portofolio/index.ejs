@@ -4,7 +4,7 @@
       <div class="card-header pb-0 p-3">
         <div class="row">
           <div class="col-6 d-flex align-items-center">
-            <h6 class="mb-0">Collection Articles</h6>
+            <h6 class="mb-0">Collection Portofolio</h6>
           </div>
           <div class="col-6 text-end">
             <!-- Optional button or other elements can go here -->
@@ -49,8 +49,8 @@
                         <i class="fa fa-ellipsis-v text-lg"></i>
                       </button>
                       <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink">
-                        <a href="/post/edit/<%= post._id %>" class="dropdown-item text-warning"><i class="fas fa-pencil-alt me-2"></i> Update</a>
-                        <a href="/post/delete/<%= post._id %>" class="dropdown-item text-danger"><i class="far fa-trash-alt me-2"></i> Delete</a>
+                        <a href="#" class="dropdown-item text-warning" data-bs-toggle="modal" data-bs-target="#modal-form" onclick="openModal('edit', '<%= post._id %>', '<%= post.title %>')"><i class="fas fa-pencil-alt me-2" aria-hidden="true"></i> Edit</a>
+                        <a href="/posts/delete/<%= post._id %>" class="dropdown-item text-danger"><i class="far fa-trash-alt me-2"></i> Delete</a>
                       </div>
                     </div>
                   </td>

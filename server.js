@@ -12,7 +12,7 @@ const greetingMiddleware = require("./src/app/Http/Middlewares/greetingMiddlewar
 
 // Set the view engine to ejs
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "src/resource/views")); // Set the views directory
+app.set("views", path.join(__dirname, "src/resource/views"));
 
 // Use express-ejs-layouts
 app.use(expressLayouts);

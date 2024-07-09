@@ -1,7 +1,11 @@
-function generateSlug(name) {
-  return name
+function generateSlug(title) {
+  if (!title || typeof title !== "string") {
+    throw new TypeError("Title must be a non-empty string");
+  }
+  return title
     .toString()
     .toLowerCase()
+    .trim()
     .replace(/\s+/g, "-") // Ganti spasi dengan -
     .replace(/[^\w\-]+/g, "") // Hapus karakter non-word
     .replace(/\-\-+/g, "-") // Ganti multiple - dengan single -

@@ -1,63 +1,70 @@
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-lg-9 col-12 mx-auto">
-      <form action="/post" method="POST" enctype="multipart/form-data">
+      <form action="/post/edit/<%= post._id %>" method="POST" enctype="multipart/form-data">
         <div class="card card-body mt-4">
-          <h6 class="mb-0">New Post</h6>
-          <p class="text-sm mb-0">Create new post</p>
+          <h6 class="mb-0">Update Post</h6>
+          <p class="text-sm mb-0">Update post</p>
           <hr class="horizontal dark my-3">
           <label for="title" class="form-label">Post Title</label>
-          <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
+          <input type="text" class="form-control" id="title" name="title" value="<%= post.title %>" placeholder="Title" required>
 
           <label class="mt-4">Content Description</label>
           <p class="form-text text-muted text-xs ms-1">
             This is how others will learn about the content, so make it good!
           </p>
-          <textarea class="form-control" name="content" id="content" rows="6" placeholder="Enter your content here" required></textarea>
+          <textarea class="form-control" name="content" id="content" rows="6" placeholder="Enter your content here" required><%= post.content %></textarea>
 
           <div class="mt-4 row">
             <div class="col-6">
               <label class="form-label">Category Tags</label>
               <select class="form-select" id="choices-multiple-remove-button" name="category_id" required>
-                <option value="">Select Category...</option>
-                <% if (categories && categories.length > 0) { %>
-                <% categories.forEach(function(category) { %>
-                <option value="<%= category._id %>"><%= category.name %></option>
-                <% }); %>
+                <% categories.forEach(category => { %>
+                <% if (category && category._id && post && post.category_id) { %>
+                <% if (category._id.toString() === post.category_id.toString()) { %>
+                <option value="<%= category._id %>" selected><%= category.name %></option>
                 <% } else { %>
-                <option value="">No categories available</option>
+                <option value="<%= category._id %>"><%= category.name %></option>
                 <% } %>
+                <% } %>
+                <% }); %>
               </select>
             </div>
             <div class="col-6">
               <label class="form-label">Post Type</label>
               <select class="form-select" name="type" id="type" required>
-                <option value="article">Article</option>
-                <option value="portfolio">Portfolio</option>
+                <option value="article" <%= post.type === 'article' ? 'selected' : '' %>>Article</option>
+                <option value="portfolio" <%= post.type === 'portfolio' ? 'selected' : '' %>>Portfolio</option>
               </select>
             </div>
           </div>
 
-          <div class=" mt-4 row">
+          <div class="mt-4 row">
             <div class="col-6">
               <label class="form-label">Status</label>
               <select class="form-control" name="status" id="status" required>
-                <option value="draft">Draft</option>
-                <option value="published">Published</option>
+                <option value="draft" <%= post.status === 'draft' ? 'selected' : '' %>>Draft</option>
+                <option value="published" <%= post.status === 'published' ? 'selected' : '' %>>Published</option>
               </select>
             </div>
             <div class="col-6">
               <label class="form-label">Publish Date</label>
-              <input class="form-control datetimepicker" type="date" name="published" placeholder="Please select publish date" required>
+              <input class="form-control datetimepicker" type="date" name="published" value="<%= post.published ? post.published.toISOString().split('T')[0] : '' %>" placeholder="Please select publish date" required>
             </div>
           </div>
 
           <label class="mt-4 form-label">Image</label>
           <input type="file" class="form-control" name="img" id="img">
+          <% if (post.img) { %>
+          <div class="mt-2">
+            <img src="<%= post.img %>" alt="Current image" width="100">
+            <input type="hidden" name="existingImage" value="<%= post.img %>">
+          </div>
+          <% } %>
 
           <div class="d-flex justify-content-end mt-4">
             <button type="button" name="button" class="btn btn-light m-0">Cancel</button>
-            <button type="submit" name="button" class="btn bg-gradient-primary m-0 ms-2">Create Post</button>
+            <button type="submit" name="button" class="btn bg-gradient-primary m-0 ms-2">Update Post</button>
           </div>
         </div>
       </form>
