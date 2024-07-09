@@ -11,6 +11,7 @@ const HomePageControlller = require("../app/Http/Controllers/HomePage/HomePageCo
 const Dash = require("../app/Http/Controllers/Dashboard/DashboardController");
 const Categories = require("../app/Http/Controllers/Dashboard/Categories/categoryController");
 const Posts = require("../app/Http/Controllers/Dashboard/Posts/PostsController");
+const Articles = require("../app/Http/Controllers/Dashboard/Articles/ArticlesController");
 
 const upload = require("../app/Http/Middlewares/uploadMiddleware");
 const getCategories =
@@ -34,5 +35,8 @@ router.get("/categories/delete/:id", Categories.delete, ensureAuthenticated);
 
 router.get("/post", ensureAuthenticated, getCategories, Posts.create);
 router.post("/post", ensureAuthenticated, upload.single("img"), Posts.store);
+
+// Rute untuk artikel
+router.get("/articles", Articles.index);
 
 module.exports = router;
