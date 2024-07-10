@@ -34,6 +34,7 @@ router.get("/categories/delete/:id", Categories.delete, ensureAuthenticated);
 
 router.get("/post", ensureAuthenticated, getCategories, Posts.create);
 router.post("/post", ensureAuthenticated, upload.single("img"), Posts.store);
+router.get("/post/show/:id", Posts.show, ensureAuthenticated);
 router.get("/post/edit/:id", Posts.edit, ensureAuthenticated);
 router.post(
   "/post/edit/:id",

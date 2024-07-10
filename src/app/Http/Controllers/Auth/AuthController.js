@@ -53,6 +53,7 @@ exports.logout = async (req, res) => {
     if (err) {
       return res.send("Error logging out");
     }
+    res.clearCookie("connect.sid", { path: "/" }); // Clear the session cookie
     res.redirect("/login");
   });
 };

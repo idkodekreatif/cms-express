@@ -49,6 +49,7 @@
                         <i class="fa fa-ellipsis-v text-lg"></i>
                       </button>
                       <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink">
+                        <a href="/post/show/<%= post._id %>" class="dropdown-item text-secondary"><i class="fas fa fa-eye me-2"></i> Show</a>
                         <a href="/post/edit/<%= post._id %>" class="dropdown-item text-warning"><i class="fas fa-pencil-alt me-2"></i> Update</a>
                         <!-- <a href="/post/delete/<%= post._id %>" class="dropdown-item text-danger"><i class="far fa-trash-alt me-2"></i> Delete</a> -->
                         <a href="/post/delete/<%= post._id %>" class="dropdown-item text-danger" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this post?')) document.getElementById('delete-form-<%= post._id %>').submit();">

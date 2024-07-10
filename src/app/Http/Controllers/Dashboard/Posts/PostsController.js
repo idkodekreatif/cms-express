@@ -56,6 +56,31 @@ exports.store = async (req, res) => {
   }
 };
 
+exports.show = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    const categories = await Category.find();
+
+    if (!post || !categories) {
+      return res.status(404).render("404", { layout: "./layouts/dashboard" });
+    }
+    res.render("dashboard/post/show", {
+      title: "Show Post",
+      post,
+      categories,
+      layout: "./layouts/dashboard",
+    });
+  } catch (error) {
+    console.error("Error fetching post for show:", error);
+    res.render("dashboard/post/show", {
+      error: "Error fetching post.",
+      post: {},
+      categories: [],
+      layout: "./layouts/dashboard",
+    });
+  }
+};
+
 exports.edit = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
