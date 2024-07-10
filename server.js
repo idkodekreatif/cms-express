@@ -9,6 +9,7 @@ const webRoutes = require("./src/routes/web");
 const setCurrentRoute = require("./src/app/Http/Middlewares/setCurrentRoute");
 const connectToDatabase = require("./src/configs/connectToDatabase");
 const greetingMiddleware = require("./src/app/Http/Middlewares/greetingMiddleware");
+const methodOverride = require("method-override");
 
 // Set the view engine to ejs
 app.set("view engine", "ejs");
@@ -34,6 +35,7 @@ app.use(setCurrentRoute);
 app.use(sessionMiddleware);
 app.use(greetingMiddleware);
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 app.use(webRoutes);
 
 const PORT = process.env.PORT || 3000;

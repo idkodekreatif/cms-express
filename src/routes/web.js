@@ -36,7 +36,7 @@ router.get("/post", ensureAuthenticated, getCategories, Posts.create);
 router.post("/post", ensureAuthenticated, upload.single("img"), Posts.store);
 router.get("/post/edit/:id", Posts.edit);
 router.post("/post/edit/:id", upload.single("img"), Posts.update);
-// router.post("/post/delete/:id", ArtPostsicles.delete);
+router.post("/post/delete/:id", Posts.delete);
 
 // Rute untuk artikel
 router.get("/articles", Articles.index, ensureAuthenticated);

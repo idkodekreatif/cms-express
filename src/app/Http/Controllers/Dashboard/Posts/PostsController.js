@@ -2,6 +2,8 @@ const Post = require("../../../../Models/Posts");
 const generateSlug = require("../../../../../Utils/slugify");
 const Category = require("../../../../Models/Categories");
 const upload = require("../../../Middlewares/uploadMiddleware");
+const fs = require("fs/promises");
+const path = require("path");
 
 exports.create = async (req, res) => {
   try {
@@ -123,5 +125,40 @@ exports.update = async (req, res) => {
       categories,
       layout: "./layouts/dashboard",
     });
+  }
+};
+
+exports.delete = async (req, res) => {
+  try {
+    const postId = req.params.id;
+
+    // Delete post from the database
+    const deletedPost = await Post.findByIdAndDelete(postId);
+
+    if (!deletedPost) {
+      return res.status(404).send("Post not found");
+    }
+
+    // Delete the associated image file if it exists
+    if (deletedPost.img) {
+      // The path should be relative to the root of your project
+      const imagePath = path.join(
+        __dirname,
+        "../../../../public",
+        deletedPost.img
+      );
+      try {
+        await fs.unlink(imagePath);
+        console.log("Deleted image:", deletedPost.img);
+      } catch (unlinkError) {
+        console.error("Error deleting image file:", unlinkError);
+      }
+    }
+
+    // Redirect or send success response
+    res.redirect("/post"); // Adjust the path as needed
+  } catch (error) {
+    console.error("Error deleting post:", error);
+    res.status(500).send("Error deleting post");
   }
 };
