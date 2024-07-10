@@ -2,8 +2,8 @@ const Post = require("../../../../Models/Posts");
 const generateSlug = require("../../../../../Utils/slugify");
 const Category = require("../../../../Models/Categories");
 const upload = require("../../../Middlewares/uploadMiddleware");
-const fs = require("fs/promises");
 const path = require("path");
+const fs = require("fs").promises;
 
 exports.create = async (req, res) => {
   try {
@@ -141,17 +141,32 @@ exports.delete = async (req, res) => {
 
     // Delete the associated image file if it exists
     if (deletedPost.img) {
+      // Debugging: Log the original image value
+      console.log("Original Image value:", deletedPost.img);
+
+      // Remove the /uploads/ prefix if it exists
+      const imageFileName = deletedPost.img.replace("/uploads/", "");
+
       // The path should be relative to the root of your project
-      const imagePath = path.join(
+      const imagePath = path.resolve(
         __dirname,
-        "../../../../public",
-        deletedPost.img
+        "../../../../../public/uploads",
+        imageFileName
       );
+
+      // Debugging: Log the image path
+      console.log("Image path:", imagePath);
+
       try {
+        await fs.access(imagePath); // Check if the file exists
         await fs.unlink(imagePath);
         console.log("Deleted image:", deletedPost.img);
       } catch (unlinkError) {
-        console.error("Error deleting image file:", unlinkError);
+        if (unlinkError.code === "ENOENT") {
+          console.error("Image file not found:", imagePath);
+        } else {
+          console.error("Error deleting image file:", unlinkError);
+        }
       }
     }
 
