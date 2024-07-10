@@ -44,7 +44,7 @@ exports.store = async (req, res) => {
     });
 
     await post.save();
-    res.redirect("/post"); // Ganti dengan path yang sesuai
+    res.redirect("back"); // Ganti dengan path yang sesuai
   } catch (error) {
     console.error("Error creating post:", error);
     const categories = await Category.find();
@@ -115,7 +115,7 @@ exports.update = async (req, res) => {
       return res.status(404).render("404", { layout: "./layouts/dashboard" });
     }
 
-    res.redirect("/post"); // Adjust the path as needed
+    res.redirect("back"); // Adjust the path as needed
   } catch (error) {
     console.error("Error updating post:", error);
     const categories = await Category.find();
@@ -171,7 +171,7 @@ exports.delete = async (req, res) => {
     }
 
     // Redirect or send success response
-    res.redirect("/post"); // Adjust the path as needed
+    res.redirect("back"); // Adjust the path as needed
   } catch (error) {
     console.error("Error deleting post:", error);
     res.status(500).send("Error deleting post");
