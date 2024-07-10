@@ -91,9 +91,36 @@ exports.update = async (req, res) => {
     }
 
     const slug = generateSlug(title);
-    const img = req.file
-      ? `/uploads/${req.file.filename}`
-      : req.body.existingImage;
+    const existingImage = req.body.existingImage;
+    let img;
+
+    if (req.file) {
+      // New image is uploaded
+      img = `/uploads/${req.file.filename}`;
+
+      // Remove the old image
+      if (existingImage) {
+        const oldImagePath = path.resolve(
+          __dirname,
+          "../../../../../public/uploads",
+          existingImage.replace("/uploads/", "")
+        );
+        try {
+          await fs.access(oldImagePath); // Check if the file exists
+          await fs.unlink(oldImagePath);
+          console.log("Deleted old image:", existingImage);
+        } catch (unlinkError) {
+          if (unlinkError.code === "ENOENT") {
+            console.error("Old image file not found:", oldImagePath);
+          } else {
+            console.error("Error deleting old image file:", unlinkError);
+          }
+        }
+      }
+    } else {
+      // No new image, use existing image
+      img = existingImage;
+    }
 
     const updatedPost = await Post.findByIdAndUpdate(
       req.params.id,
