@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+const breadcrumbs = require("../app/Http/Middlewares/breadcrumbs");
 const ensureAuthenticated = require("../app/Http/Middlewares/authMiddleware");
 
 // Controllers
@@ -15,6 +16,8 @@ const Portofolio = require("../app/Http/Controllers/Dashboard/Portofolios/Portof
 const upload = require("../app/Http/Middlewares/uploadMiddleware");
 const getCategories =
   require("../app/Http/Middlewares/categoryMiddleware").getCategories;
+
+router.use(breadcrumbs);
 
 router.get("/", HomePageControlller.index);
 router.get("/about", HomePageControlller.about);

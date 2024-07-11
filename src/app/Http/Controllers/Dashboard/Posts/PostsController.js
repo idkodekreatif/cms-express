@@ -65,8 +65,13 @@ exports.show = async (req, res) => {
       return res.status(404).render("404", { layout: "./layouts/dashboard" });
     }
     res.render("dashboard/post/show", {
-      title: "Show Post",
+      title: post.title,
       post,
+      breadcrumbs: [
+        { name: "Pages", url: "/pages" },
+        { name: "Default", url: "/default" },
+        { name: post.title, url: `/post/show/${post._id}` },
+      ],
       categories,
       layout: "./layouts/dashboard",
     });
@@ -92,6 +97,11 @@ exports.edit = async (req, res) => {
     res.render("dashboard/post/edit", {
       title: "Edit Post",
       post,
+      breadcrumbs: [
+        { name: "Pages", url: "/pages" },
+        { name: "Default", url: "/default" },
+        { name: post.title, url: `/post/edit/${post._id}` },
+      ],
       categories,
       layout: "./layouts/dashboard",
     });
