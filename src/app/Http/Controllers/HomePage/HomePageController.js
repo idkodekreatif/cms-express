@@ -5,7 +5,7 @@ exports.index = async (req, res) => {
 };
 
 exports.about = async (req, res) => {
-  res.render("homepage/index", {
+  res.render("homepage/about", {
     title: "About",
   });
 };

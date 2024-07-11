@@ -120,12 +120,7 @@
            <div class="d-flex bg-gray-100 border-radius-lg p-3">
              <h4 class="my-auto">
                <span class="text-secondary text-sm me-1">
-                 <% const publishedDate = new Date(highestViewsPost.published); %>
-                 <% const month = publishedDate.getMonth() + 1; %>
-                 <% const day = publishedDate.getDate(); %>
-                 <% const year = publishedDate.getFullYear(); %>
-                 <% const formattedDate = `${month}-${day}-${year}`; %>
-                 <%= formattedDate %>
+                 <%= new Date(highestViewsPost.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
                </span>
              </h4>
              <a href="/post/show/<%= highestViewsPost._id %>" class="btn btn-outline-dark mb-0 ms-auto">Show</a>

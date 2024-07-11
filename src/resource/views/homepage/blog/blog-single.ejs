@@ -14,7 +14,7 @@
           </div>
           <div class="">
             <p class="text-dark"><%= post.user_id.fullname %></p>
-            <span class="text-sm"><%= new Date(post.createdAt).toLocaleDateString() %>. <%= post.views %> read</span>
+            <span class="text-sm"><%= new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>. <%= post.views %> read</span>
           </div>
         </div>
 
@@ -29,7 +29,7 @@
             Comments
           </h3>
           <div class="comment flex space-x-4 border-b border-border py-8">
-            <img src="images/comment-author-1.png" class="h-[70px] w-[70px] rounded-full" alt="" />
+            <img src="/public/assets/images/comment-author-1.png" class="h-[70px] w-[70px] rounded-full" alt="" />
             <div>
               <h4 class="font-primary text-lg font-medium capitalize">
                 ronin bishop
@@ -46,8 +46,8 @@
             </div>
           </div>
           <div class="comment flex space-x-4 py-8">
-            <img src="images/icons/replay-arrow.svg" alt="" />
-            <img src="images/comment-author-2.png" class="h-[70px] w-[70px] rounded-full" alt="" />
+            <img src="/public/assets/images/icons/replay-arrow.svg" alt="" />
+            <img src="/public/assets/images/comment-author-2.png" class="h-[70px] w-[70px] rounded-full" alt="" />
             <div>
               <h4 class="font-primary text-lg font-medium capitalize">
                 Kathryn Murphy
