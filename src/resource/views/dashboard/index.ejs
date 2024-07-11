@@ -177,23 +177,18 @@
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Title</p>
-                   <span class="text-xs font-weight-bolder"><%= article.title %></span>
+                   <span class="text-xs font-weight-bolder"><%= article.title.length > 25 ? article.title.substring(0, 25) + '...' : article.title %></span>
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
                    <span class="text-xs font-weight-bolder">
-                     <% const publishedDate = new Date(article.published); %>
-                     <% const month = publishedDate.getMonth() + 1; %>
-                     <% const day = publishedDate.getDate(); %>
-                     <% const year = publishedDate.getFullYear(); %>
-                     <% const formattedDate = `${month}-${day}-${year}`; %>
-                     <%= formattedDate %>
+                     <%= new Date(article.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
                    </span>
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Category</p>
                    <% if (article.category_id && article.category_id.name) { %>
-                   <span class="text-xs font-weight-bolder"><%= article.category_id.name %></span>
+                   <span class="text-xs font-weight-bolder"><%= article.category_id.name.length > 10 ? article.category_id.name.substring(0, 10) + '...' : article.category_id.name %></span>
                    <% } else { %>
                    <span class="text-xs font-weight-bolder">Uncategorized</span>
                    <% } %>
@@ -254,23 +249,18 @@
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Title</p>
-                   <span class="text-xs font-weight-bolder"><%= article.title %></span>
+                   <span class="text-xs font-weight-bolder"><%= article.title.length > 25 ? article.title.substring(0, 25) + '...' : article.title %></span>
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
                    <span class="text-xs font-weight-bolder">
-                     <% const publishedDate = new Date(article.published); %>
-                     <% const month = publishedDate.getMonth() + 1; %>
-                     <% const day = publishedDate.getDate(); %>
-                     <% const year = publishedDate.getFullYear(); %>
-                     <% const formattedDate = `${month}-${day}-${year}`; %>
-                     <%= formattedDate %>
+                     <%= new Date(article.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
                    </span>
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Category</p>
                    <% if (article.category_id && article.category_id.name) { %>
-                   <span class="text-xs font-weight-bolder"><%= article.category_id.name %></span>
+                   <span class="text-xs font-weight-bolder"> <%= article.category_id.name.length > 10 ? article.category_id.name.substring(0, 10) + '...' : article.category_id.name %></span>
                    <% } else { %>
                    <span class="text-xs font-weight-bolder">Uncategorized</span>
                    <% } %>
@@ -331,23 +321,20 @@
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Title</p>
-                   <span class="text-xs font-weight-bolder"><%= portfolio.title %></span>
+                   <span class="text-xs font-weight-bolder">
+                     <%= portfolio.title.length > 25 ? portfolio.title.substring(0, 25) + '...' : portfolio.title %>
+                   </span>
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
                    <span class="text-xs font-weight-bolder">
-                     <% const publishedDate = new Date(portfolio.published); %>
-                     <% const month = publishedDate.getMonth() + 1; %>
-                     <% const day = publishedDate.getDate(); %>
-                     <% const year = publishedDate.getFullYear(); %>
-                     <% const formattedDate = `${month}-${day}-${year}`; %>
-                     <%= formattedDate %>
+                     <%= new Date(portfolio.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
                    </span>
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Category</p>
                    <% if (portfolio.category_id && portfolio.category_id.name) { %>
-                   <span class="text-xs font-weight-bolder"><%= portfolio.category_id.name %></span>
+                   <span class="text-xs font-weight-bolder"> <%= portfolio.category_id.name.length > 10 ? portfolio.category_id.name.substring(0, 10) + '...' : portfolio.category_id.name %></span>
                    <% } else { %>
                    <span class="text-xs font-weight-bolder">Uncategorized</span>
                    <% } %>
@@ -408,23 +395,20 @@
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Title</p>
-                   <span class="text-xs font-weight-bolder"><%= portfolio.title %></span>
+                   <span class="text-xs font-weight-bolder"><%= portfolio.title.length > 25 ? portfolio.title.substring(0, 25) + '...' : portfolio.title %></span>
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
                    <span class="text-xs font-weight-bolder">
-                     <% const publishedDate = new Date(portfolio.published); %>
-                     <% const month = publishedDate.getMonth() + 1; %>
-                     <% const day = publishedDate.getDate(); %>
-                     <% const year = publishedDate.getFullYear(); %>
-                     <% const formattedDate = `${month}-${day}-${year}`; %>
-                     <%= formattedDate %>
+                     <%= new Date(portfolio.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
                    </span>
                  </div>
                  <div class="ms-auto">
                    <p class="text-xs mb-0 text-secondary font-weight-bold">Category</p>
                    <% if (portfolio.category_id && portfolio.category_id.name) { %>
-                   <span class="text-xs font-weight-bolder"><%= portfolio.category_id.name %></span>
+                   <span class="text-xs font-weight-bolder">
+                     <%= portfolio.category_id.name.length > 10 ? portfolio.category_id.name.substring(0, 10) + '...' : portfolio.category_id.name %>
+                   </span>
                    <% } else { %>
                    <span class="text-xs font-weight-bolder">Uncategorized</span>
                    <% } %>
