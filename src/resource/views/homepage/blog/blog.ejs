@@ -69,18 +69,11 @@
         <li>
           <a class="filter-btn filter-btn-active btn btn-sm" href="#">All Categories</a>
         </li>
+        <% categories.forEach(category => { %>
         <li>
-          <a class="filter-btn btn btn-sm" href="#">Development</a>
+          <a class="filter-btn btn btn-sm" href="#"><%= category.name %></a>
         </li>
-        <li>
-          <a class="filter-btn btn btn-sm" href="#">Updates</a>
-        </li>
-        <li>
-          <a class="filter-btn btn btn-sm" href="#">Email Marketing</a>
-        </li>
-        <li>
-          <a class="filter-btn btn btn-sm" href="#">Rate Optimization</a>
-        </li>
+        <% }); %>
       </ul>
     </div>
 
