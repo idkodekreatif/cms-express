@@ -31,3 +31,34 @@ exports.index = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+exports.getAllCategories = async (req, res, next) => {
+  try {
+    const categories = await Category.find();
+    res.json({ categories });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getPostsByCategory = async (req, res, next) => {
+  const categoryId = req.query.category_id;
+
+  try {
+    let posts;
+    if (categoryId === "all") {
+      posts = await Post.find()
+        .populate("category_id")
+        .populate("user_id")
+        .sort({ createdAt: -1 });
+    } else {
+      posts = await Post.find({ category_id: categoryId })
+        .populate("category_id")
+        .populate("user_id")
+        .sort({ createdAt: -1 });
+    }
+    res.json({ posts });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

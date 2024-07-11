@@ -59,4 +59,10 @@ router.get("/articles", Articles.index, ensureAuthenticated);
 // Rute untuk portofolio
 router.get("/portofolio", Portofolio.index, ensureAuthenticated);
 
+// Endpoint untuk mendapatkan semua kategori
+router.get("/api/categories", BlogPageControlller.getAllCategories);
+
+// Endpoint untuk mendapatkan postingan berdasarkan kategori
+router.get("/api/posts", BlogPageControlller.getPostsByCategory);
+
 module.exports = router;
