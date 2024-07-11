@@ -239,3 +239,30 @@ exports.delete = async (req, res) => {
     res.status(500).send("Error deleting post");
   }
 };
+
+exports.views = async (req, res) => {
+  try {
+    const postId = req.params.postId;
+
+    // Ambil post berdasarkan ID dan populate untuk mendapatkan data user
+    const post = await Post.findById(postId)
+      .populate("user_id", "fullname")
+      .exec();
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    // Tambahkan 1 pada views
+    post.views++;
+    await post.save();
+
+    // Render halaman detail post dengan data post dan title
+    res.render("homepage/blog/blog-single", {
+      post: post,
+      title: post.title, // Gunakan judul post sebagai title halaman
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

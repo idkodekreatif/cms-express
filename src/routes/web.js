@@ -5,8 +5,12 @@ const breadcrumbs = require("../app/Http/Middlewares/breadcrumbs");
 const ensureAuthenticated = require("../app/Http/Middlewares/authMiddleware");
 
 // Controllers
+// view front
 const Auth = require("../app/Http/Controllers/Auth/AuthController");
 const HomePageControlller = require("../app/Http/Controllers/HomePage/HomePageController");
+const BlogPageControlller = require("../app/Http/Controllers/HomePage/BlogPageController");
+
+// admin access
 const Dash = require("../app/Http/Controllers/Dashboard/DashboardController");
 const Categories = require("../app/Http/Controllers/Dashboard/Categories/categoryController");
 const Posts = require("../app/Http/Controllers/Dashboard/Posts/PostsController");
@@ -21,6 +25,7 @@ router.use(breadcrumbs);
 
 router.get("/", HomePageControlller.index);
 router.get("/about", HomePageControlller.about);
+router.get("/blog", BlogPageControlller.index);
 
 router.get("/login", Auth.login);
 router.post("/login", Auth.login);
@@ -36,6 +41,7 @@ router.post("/categories", Categories.update, ensureAuthenticated);
 router.get("/categories/delete/:id", Categories.delete, ensureAuthenticated);
 
 router.get("/post", ensureAuthenticated, getCategories, Posts.create);
+router.get("/posts/:postId", Posts.views);
 router.post("/post", ensureAuthenticated, upload.single("img"), Posts.store);
 router.get("/post/show/:id", Posts.show, ensureAuthenticated);
 router.get("/post/edit/:id", Posts.edit, ensureAuthenticated);
