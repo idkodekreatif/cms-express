@@ -3,6 +3,7 @@ const ejs = require("ejs");
 const path = require("path");
 const expressLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser");
+const sessionConfig = require("./src/app/Http/Middlewares/sessionConfig");
 const sessionMiddleware = require("./src/app/Http/Middlewares/sessionMiddleware");
 const app = express();
 const webRoutes = require("./src/routes/web");
@@ -32,6 +33,7 @@ connectToDatabase();
 // Use the setCurrentRoute middleware
 // Middleware
 app.use(setCurrentRoute);
+app.use(sessionConfig);
 app.use(sessionMiddleware);
 app.use(greetingMiddleware);
 app.use(bodyParser.urlencoded({ extended: true }));

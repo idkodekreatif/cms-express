@@ -1,4 +1,8 @@
 <div class="container-fluid py-4">
+  <% if (error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
   <div class="row">
     <div class="col-lg-9 col-12 mx-auto">
       <form action="/post" method="POST" enctype="multipart/form-data">

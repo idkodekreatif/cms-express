@@ -44,9 +44,13 @@ exports.store = async (req, res) => {
     });
 
     await post.save();
+
+    req.session.success = "Post created successfully!";
     res.redirect("back"); // Ganti dengan path yang sesuai
   } catch (error) {
     console.error("Error creating post:", error);
+    req.session.error = "Error creating post.";
+
     const categories = await Category.find();
     res.render("dashboard/post/create", {
       error: "Error creating post.",
@@ -176,10 +180,12 @@ exports.update = async (req, res) => {
     if (!updatedPost) {
       return res.status(404).render("404", { layout: "./layouts/dashboard" });
     }
-
+    req.session.success = "Post updated successfully!";
     res.redirect("back"); // Adjust the path as needed
   } catch (error) {
     console.error("Error updating post:", error);
+    req.session.error = "Error updated post.";
+
     const categories = await Category.find();
     res.render("dashboard/post/edit", {
       error: "Error updating post.",
@@ -231,11 +237,12 @@ exports.delete = async (req, res) => {
         }
       }
     }
-
+    req.session.success = "Post deleted successfully!";
     // Redirect or send success response
     res.redirect("back"); // Adjust the path as needed
   } catch (error) {
     console.error("Error deleting post:", error);
+    req.session.error = "Error deleted post.";
     res.status(500).send("Error deleting post");
   }
 };

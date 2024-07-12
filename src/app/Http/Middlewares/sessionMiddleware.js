@@ -1,8 +1,10 @@
-const session = require("express-session");
+module.exports = (req, res, next) => {
+  res.locals.success = req.session.success;
+  res.locals.error = req.session.error;
 
-module.exports = session({
-  secret: "secret-key",
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false },
-});
+  // Clear session messages
+  delete req.session.success;
+  delete req.session.error;
+
+  next();
+};

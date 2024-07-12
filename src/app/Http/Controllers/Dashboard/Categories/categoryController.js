@@ -28,9 +28,12 @@ exports.store = async (req, res) => {
 
   try {
     await newCategories.save();
+    req.session.success = "Category created successfully!";
     res.redirect("/categories");
   } catch (error) {
     console.error("Error creating categories", error);
+    req.session.error = "Error create category.";
+
     res.render("dashboard/categories/index", {
       title: "Add New Category",
       error: "Error creating category. Please try again.",
@@ -45,9 +48,11 @@ exports.update = async (req, res) => {
 
   try {
     await Category.findByIdAndUpdate(id, { name, slug });
+    req.session.success = "Category updated successfully!";
     res.redirect("/categories");
   } catch (error) {
     console.error("Error updating category:", error);
+    req.session.error = "Error updated category.";
     res.redirect("/categories");
   }
 };
@@ -57,9 +62,11 @@ exports.delete = async (req, res) => {
 
   try {
     await Category.findByIdAndDelete(id);
+    req.session.success = "Category deleted successfully!";
     res.redirect("/categories");
   } catch (error) {
     console.error("Error deleting category:", error);
+    req.session.error = "Error deleted category.";
     res.redirect("/categories");
   }
 };
