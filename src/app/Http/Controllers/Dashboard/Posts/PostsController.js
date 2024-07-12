@@ -222,13 +222,9 @@ exports.delete = async (req, res) => {
         imageFileName
       );
 
-      // Debugging: Log the image path
-      console.log("Image path:", imagePath);
-
       try {
         await fs.access(imagePath); // Check if the file exists
         await fs.unlink(imagePath);
-        console.log("Deleted image:", deletedPost.img);
       } catch (unlinkError) {
         if (unlinkError.code === "ENOENT") {
           console.error("Image file not found:", imagePath);
