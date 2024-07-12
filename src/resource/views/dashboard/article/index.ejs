@@ -32,17 +32,14 @@
                 <% posts.forEach(function(post, index) { %>
                 <tr>
                   <td class="text-sm font-weight-normal"><%= index + 1 %></td>
-                  <td class="text-sm font-weight-normal"><%= post.title %></td>
+                  <td class="text-sm font-weight-normal"><%= post.title.length > 25 ? post.title.substring(0, 25) + '...' : post.title %></td>
                   <td class="text-sm font-weight-normal"><%= post.category_id.name %></td>
                   <td class="text-sm font-weight-normal"><%= post.user_id.fullname %></td>
                   <td class="text-sm font-weight-normal"><%= post.views %></td>
                   <td class="text-sm font-weight-normal"><%= post.status %></td>
-                  <td class="text-sm font-weight-normal"><% const publishedDate = new Date(post.published); %>
-                    <% const month = publishedDate.getMonth() + 1; %>
-                    <% const day = publishedDate.getDate(); %>
-                    <% const year = publishedDate.getFullYear(); %>
-                    <% const formattedDate = `${month}-${day}-${year}`; %>
-                    <%= formattedDate %></td>
+                  <td class="text-sm font-weight-normal">
+                    <%= new Date(post.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                  </td>
                   <td class="text-sm font-weight-normal">
                     <div class="dropdown">
                       <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

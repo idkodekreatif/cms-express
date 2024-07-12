@@ -7,9 +7,7 @@
              <div class="full-background" style="background-image: url('https://demos.creative-tim.com/soft-ui-dashboard-pro/assets/img/curved-images/white-curved.jpeg')"></div>
              <div class="card-body pt-4 text-center">
                <h2 class="text-white mb-0 mt-2 up"><%= greeting %>, <%= username %>!</h2>
-               <!-- <h1 class="text-white mb-0 up">$15,800</h1> -->
                <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Current time: <%= currentTime %></span>
-               <!-- <a href="javascript:;" class="btn btn-outline-white mb-2 px-5 up">View more</a> -->
              </div>
            </div>
          </div>
@@ -121,7 +119,7 @@
               const content = highestViewsPost.content;
               const trimmedContent = content.length > maxLength ? content.substring(0, content.lastIndexOf(" ", maxLength)) + "..." : content;
             %>
-           <p class="text-sm"><%= trimmedContent %></p>
+           <p class="text-sm"><%- trimmedContent %></p>
            <div class="d-flex bg-gray-100 border-radius-lg p-3">
              <h4 class="my-auto">
                <span class="text-secondary text-sm me-1">
