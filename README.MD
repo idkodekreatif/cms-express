@@ -29,20 +29,17 @@ This is a personal portfolio web application built using Express.js and MongoDB 
 - **Node.js (v14+)**
 - **MongoDB (locally or via MongoDB Atlas)**
 - **npm (comes with Node.js)**
-- **Installation**
-- **Clone the repository:**
 
-## bash
+## Installation
 
-    1. Copy code
-    2. git clone https://github.com/yourusername/portfolio-webapp.git
+1. Clone the repository:
 
-cd portfolio-webapp
-Install dependencies:
+   git clone https://github.com/yourusername/portfolio-webapp.git
+   cd portfolio-webapp
 
-bash
-Copy code
-npm install
+2. Install dependencies:
+   npm install
+
 Set up environment variables:
 
 Create a .env file in the root directory with the following contents:
