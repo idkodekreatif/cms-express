@@ -39,23 +39,13 @@ This is a personal portfolio web application built using Express.js and MongoDB 
 
 2. Install dependencies:
 
-   1. npm install
-
-Set up environment variables:
-
-Create a .env file in the root directory with the following contents:
-
-makefile
-Copy code
-PORT=3000
-MONGO_URI=mongodb://localhost:27017/portfolio
-SESSION_SECRET=your-session-secret
-Run the application:
-
-bash
-Copy code
-npm start
-Access the application in your browser at http://localhost:3000.
+   npm install
+   npm start
+   Access the application in your browser at http://localhost:3000.
 
 Admin Login
 To access the admin panel, you need to log in with an admin account. Set up your initial admin account directly in the database (MongoDB) by creating a user document in the users collection.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
