@@ -48,11 +48,11 @@ To access the admin panel, you need to log in with an admin account. Set up your
 
 ## Picture
 
-![Dashboard](<Screenshot 2024-09-15 at 20.45.03.png>)
-![Category](<Screenshot 2024-09-15 at 20.45.08.png>)
-![Create Category](<Screenshot 2024-09-15 at 20.45.12.png>)
-![Post](<Screenshot 2024-09-15 at 20.45.17.png>)
-![Data](<Screenshot 2024-09-15 at 20.45.21.png>)
+![Dashboard](</pictdoc/Screenshot 2024-09-15 at 20.45.03.png>)
+![Category](</pictdoc/Screenshot 2024-09-15 at 20.45.08.png>)
+![Create Category](</pictdoc/Screenshot 2024-09-15 at 20.45.12.png>)
+![Post](</pictdoc/Screenshot 2024-09-15 at 20.45.17.png>)
+![Data](</pictdoc/Screenshot 2024-09-15 at 20.45.21.png>)
 
 ## License
 
