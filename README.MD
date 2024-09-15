@@ -5,7 +5,7 @@
 ## Features
 
 - **(Admin Panel: Manage portfolio content such as projects, articles, and personal details.)**
-  -- **(User Authentication: Admin login functionality to protect the content management system.)**
+- **(User Authentication: Admin login functionality to protect the content management system.)**
   -- Dynamic Categories: Posts are organized by categories (e.g., "Articles" and "Portfolios") that can be dynamically created, updated, and deleted.
   -- CRUD Operations: Add, update, and delete portfolio entries through an easy-to-use interface.
   -- Responsive Design: The frontend is designed to be fully responsive and accessible across devices.
