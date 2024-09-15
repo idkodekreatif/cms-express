@@ -38,7 +38,8 @@ This is a personal portfolio web application built using Express.js and MongoDB 
    cd portfolio-webapp
 
 2. Install dependencies:
-   npm install
+
+   1. npm install
 
 Set up environment variables:
 
