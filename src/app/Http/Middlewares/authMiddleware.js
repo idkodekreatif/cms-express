@@ -1,9 +1,10 @@
 function ensureAuthenticated(req, res, next) {
   if (req.session.user) {
-    req.user = req.session.user; // Make sure req.user is set
-    return next();
+    req.user = req.session.user; // Pastikan req.user diatur dari session
+    return next(); // Lanjut ke middleware berikutnya
   } else {
-    res.redirect("/login");
+    req.session.returnTo = req.originalUrl; // Simpan route yang ingin diakses
+    res.redirect("/login"); // Arahkan ke halaman login
   }
 }
 

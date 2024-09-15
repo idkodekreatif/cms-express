@@ -33,31 +33,31 @@ router.get("/register", Auth.register);
 router.post("/register", Auth.register);
 router.get("/logout", Auth.logout);
 
-router.get("/dashboard", Dash.adminPanel, ensureAuthenticated);
+router.get("/dashboard", ensureAuthenticated, Dash.adminPanel);
 
-router.get("/categories", Categories.index, ensureAuthenticated);
-router.post("/categories", Categories.store, ensureAuthenticated);
-router.post("/categories", Categories.update, ensureAuthenticated);
-router.get("/categories/delete/:id", Categories.delete, ensureAuthenticated);
+router.get("/categories", ensureAuthenticated, Categories.index);
+router.post("/categories", ensureAuthenticated, Categories.store);
+router.post("/categories", ensureAuthenticated, Categories.update);
+router.get("/categories/delete/:id", ensureAuthenticated, Categories.delete);
 
 router.get("/post", ensureAuthenticated, getCategories, Posts.create);
 router.get("/posts/:postId", Posts.views);
 router.post("/post", ensureAuthenticated, upload.single("img"), Posts.store);
-router.get("/post/show/:id", Posts.show, ensureAuthenticated);
-router.get("/post/edit/:id", Posts.edit, ensureAuthenticated);
+router.get("/post/show/:id", ensureAuthenticated, Posts.show);
+router.get("/post/edit/:id", ensureAuthenticated, Posts.edit);
 router.post(
   "/post/edit/:id",
   upload.single("img"),
-  Posts.update,
-  ensureAuthenticated
+  ensureAuthenticated,
+  Posts.update
 );
-router.post("/post/delete/:id", Posts.delete, ensureAuthenticated);
+router.post("/post/delete/:id", ensureAuthenticated, Posts.delete);
 
 // Rute untuk artikel
-router.get("/articles", Articles.index, ensureAuthenticated);
+router.get("/articles", ensureAuthenticated, Articles.index);
 
 // Rute untuk portofolio
-router.get("/portofolio", Portofolio.index, ensureAuthenticated);
+router.get("/portofolio", ensureAuthenticated, Portofolio.index);
 
 // Endpoint untuk mendapatkan semua kategori
 router.get("/api/categories", BlogPageControlller.getAllCategories);
