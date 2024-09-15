@@ -11,3 +11,13 @@ This is a personal portfolio web application built using Express.js and MongoDB 
 - **(Responsive Design: The frontend is designed to be fully responsive and accessible across devices.)**
 - **(Image Uploads: Upload images for each project or article.)**
 - **(Content Filtering: Filter portfolio items by categories on the frontend without page reloads (using AJAX).)**
+
+## Technologies Used
+
+- **(Node.js: Server-side JavaScript runtime.)**
+- **(Express.js: Web framework for building the backend.)**
+- **(MongoDB: NoSQL database for storing portfolio content.)**
+- **(Mongoose: ODM library for MongoDB, handling database schemas and queries.)**
+- **(EJS (Embedded JavaScript): Template engine for rendering HTML views.)**
+- **(Bootstrap: Frontend framework for responsive design.)**
+- **(AJAX: Used for fetching content dynamically without reloading pages.)**
