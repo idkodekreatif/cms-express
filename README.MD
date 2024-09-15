@@ -46,6 +46,14 @@ This is a personal portfolio web application built using Express.js and MongoDB 
 Admin Login
 To access the admin panel, you need to log in with an admin account. Set up your initial admin account directly in the database (MongoDB) by creating a user document in the users collection.
 
+## Picture
+
+![Dashboard](<Screenshot 2024-09-15 at 20.45.03.png>)
+![Category](<Screenshot 2024-09-15 at 20.45.08.png>)
+![Create Category](<Screenshot 2024-09-15 at 20.45.12.png>)
+![Post](<Screenshot 2024-09-15 at 20.45.17.png>)
+![Data](<Screenshot 2024-09-15 at 20.45.21.png>)
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
